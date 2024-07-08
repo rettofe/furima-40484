@@ -5,7 +5,6 @@
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
 | email              | string | null: false, unique: true |
-| password           | string | null: false |
 | encrypted_password | string | null: false |
 | nickname           | string | null: false |
 | first_name         | string | null: false |
@@ -16,58 +15,57 @@
 
 ### Association
 
-- has_many :shouhins
-- has_many :hassousaki
+- has_many :item
+- has_many :shipping
 
-## shouhins テーブル
+## items テーブル
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | title              | string     | null: false                    |
-| shouhin_setumei    | text       | null: false                    |
-| category           | string     | null: false                    |
-| shouhin_joutai     | string     | null: false                    |
-| haisouryou         | string     | null: false                    |
-| hassou_moto        | string     | null: false                    |
-| hassou_nissuu      | string     | null: false                    |
-| hanbaikakaku       | integra    | null: false                    |
-| user_id            | reference  | null: false, foreign_key: true |
-| image              | string     | null: false                    |
+| description        | text       | null: false                    |
+| category_id        | integer    | null: false                    |
+| condition_id       | integer    | null: false                    |
+| delivery_charge_id | integer    | null: false                    |
+| shipping_source_id | integer    | null: false                    |
+| shipping_day_id    | integer    | null: false                    |
+| price              | integer    | null: false
+| user               | references | null: false, foreign_key: true |
 
 
 ### Association
 
 - belongs_to :user
-- has_one :hassousaki
+- has_one :shipping
 
 
-## hassousakis テーブル
+## shippings テーブル
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| yuubin             | integra    | null: false                    |
-| shouhin_id         | references | null: false, foreign_key: true |
-| user_id            | references | null: false, foreign_key: true |
-| todoufuken         | string     | null: false                    |
-| sikutyouson        | string     | null: false                    |
-| bancht             | string     | null: false                    |
-| tatemono           | string     | null: false                    |
-| denwa              | string     | null: false                    |
+| post_number        | string     | null: false                    |
+| item               | references | null: false, foreign_key: true |
+| user               | references | null: false, foreign_key: true |
+| prefecture         | string     | null: false                    |
+| city               | string     | null: false                    |
+| street             | string     | null: false                    |
+| building           | string     |                                |
+| phone_number       | string     | null: false                    |
 
 
 
 ### Association
 
 - belongs_to :user
-- belongs_to :shouhin
-- has_one    :kounyuu
+- belongs_to :item
+- has_one    :purchase
 
-## kounyuus テーブル
+## purchases テーブル
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| kounyuubi          | integra    | null: false                    |
-| user_id            | references | null: false, foreign_key: true |
+| purchases_date     | integra    | null: false                    |
+| user               | references | null: false, foreign_key: true |
 
 
 
@@ -75,4 +73,4 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :hassousaki
+- belongs_to :shipping
