@@ -1,9 +1,11 @@
 class Item < ApplicationRecord
-  belongs_to :category
-  belongs_to :condition
-  belongs_to :delivery_charge
-  belongs_to :shipping_day
-  belongs_to :shipping_source
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :category
+  belongs_to_active_hash :condition
+  belongs_to_active_hash :delivery_charge
+  belongs_to_active_hash :shipping_day
+  belongs_to_active_hash :shipping_source
+  has_one_attached :image
 
   validates :title, :description, :price, presence: true
 
