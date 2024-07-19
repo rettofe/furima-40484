@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipping_source
   has_one_attached :image
 
-  validates :title, :description, :price, presence: true
+  validates :title, :description, :price, :image, presence: true
 
   validates :category_id, :condition_id, :delivery_charge_id, :shipping_day_id, :shipping_source_id, numericality: { other_than: 1 }
 end

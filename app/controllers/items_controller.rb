@@ -5,11 +5,11 @@ class ItemsController < ApplicationController
     @items = Item.order("created_at DESC")
    end
   def create
-    @item = current_user.items.new(item_params)
+    @item = Item.new(item_params)
     if @item.save
-    redirect_to @item
-  else
-    render :new
+      redirect_to root_path
+    else
+      render :new, status: :unprocessable_entity
    end
   end
    def new
