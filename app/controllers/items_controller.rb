@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
     #@items = Item.order("created_at DESC")
    end
    def create
-    @item = current_user.items.build(item_params)
+    @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
     else
