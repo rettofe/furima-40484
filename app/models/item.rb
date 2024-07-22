@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipping_source
   has_one_attached :image
   belongs_to :user
-  has_one :order,dependent: :destroy
+  #has_one :order,dependent: :destroy
 
   validates :title, :description, :price, :image, presence: true
 
