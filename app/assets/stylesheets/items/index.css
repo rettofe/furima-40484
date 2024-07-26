@@ -245,10 +245,9 @@ a {
 }
 
 .item-lists>.list {
-  width: auto;
+  width: 37vh;
   padding: 1vw;
   background-color: #FFF;
-  margin: 0 auto;
 }
 
 
