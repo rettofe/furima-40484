@@ -16,7 +16,7 @@
 ### Association
 
 - has_many :items
-- has_many :purchases
+- has_many :orders
 
 ## items テーブル
 
@@ -36,7 +36,7 @@
 ### Association
 
 - belongs_to :user
-- has_one :purchase
+- has_one :order
 
 
 ## shippings テーブル
@@ -44,7 +44,7 @@
 | Column             | Type       | Options      |
 | ------------------ | ---------- | ------------------------------ |
 | post_number        | string     | null: false  |
-| purchase           | references | null: false, foreign_key: true |
+| order           | references | null: false, foreign_key: true |
 | shipping_source_id | string     | null: false  |
 | city               | string     | null: false  |
 | street             | string     | null: false  |
@@ -55,9 +55,9 @@
 
 ### Association
 
-- belongs_to :purchase
+- belongs_to :order
 
-## purchases テーブル
+## orders テーブル
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
