@@ -1,7 +1,7 @@
 class OrderShipping
   include ActiveModel::Model
 
-  attr_accessor :post_number, :shipping_source_id, :city, :street, :building, :phone_number, :user_id, :item_id
+  attr_accessor :post_number, :shipping_source_id, :city, :street, :building, :phone_number, :user_id, :item_id, :token
 
   with_options presence: true do
     validates :post_number, format: { with: /\A\d{3}-\d{4}\z/, message: "is invalid. Enter it as follows (e.g. 123-4567)" }
@@ -11,6 +11,7 @@ class OrderShipping
     validates :phone_number, format: { with: /\A\d{10,11}\z/, message: "is invalid. Enter it as follows (e.g. 09012345678)" }
     validates :user_id
     validates :item_id
+    validates :token
   end
 
   validates :building, presence: false  # 建物名は任意
