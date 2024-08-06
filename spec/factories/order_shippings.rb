@@ -6,8 +6,6 @@ FactoryBot.define do
     street { '1-1' }
     building { '東京ハイツ' }
     phone_number { '08012345678' }
-    user_id { create(:user).id } # ユーザーの作成
-    item_id { create(:item).id } # アイテムの作成
     token {"tok_abcdefghijk00000000000000000"}
   end
 end

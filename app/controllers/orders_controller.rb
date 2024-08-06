@@ -3,12 +3,8 @@ class OrdersController < ApplicationController
   before_action :set_item, only: [:new, :create, :index]
   before_action :check_if_sold, only: [:new, :create]
 
-  def index
-    gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
-    @orders = @item.orders
-  end
-
   def new
+    gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
     @order_shipping = OrderShipping.new
   end
 
