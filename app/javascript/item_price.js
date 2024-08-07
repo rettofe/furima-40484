@@ -1,11 +1,21 @@
-window.addEventListener('turbo:load', () => {
+
+const price = () => {
   const priceInput = document.getElementById("item-price"); //販売価格に対する入力フィールド
   priceInput.addEventListener("input", () => {
-    const inputValue = priceInput.value; 
-    const addTaxDom = document.getElementById("add-tax-price"); //"add-tax-price"のidをもつHTML要素で手数料を表示
-    addTaxDom.innerHTML = (Math.floor(inputValue * 0.1)); 
-    const profitDom = document.getElementById("profit"); //"profit"のidをもつHTML要素で利益を表示
-    profitDom.innerHTML = (Math.floor(inputValue * 0.9)); // 利益=販売価格-手数料 なので、販売価格の90%を計算
+  
  })
-});
+  if (priceInput) { 
+      priceInput.addEventListener("input", () => {
+      const inputValue = Math.floor(priceInput.value); // 販売価格を整数に変換
+      const addTaxDom = document.getElementById("add-tax-price"); // 手数料を表示する要素
+      const fee = Math.floor(inputValue * 0.1); // 手数料を計算し、小数点以下を切り捨て
+      addTaxDom.innerHTML = fee; 
 
+      const profitDom = document.getElementById("profit"); // 利益を表示する要素
+      const profit = inputValue - fee; // 利益を計算
+      profitDom.innerHTML = profit; // 利益を表示
+   });
+  }
+};
+window.addEventListener("turbo:load", price);
+window.addEventListener("turbo:render", price);
